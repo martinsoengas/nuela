@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model Teacher {
+  id                 Int              @id @default(autoincrement())
+  name               String
+  email              String           @unique
+  phone              String?
+  subjectAssignments TeacherSubject[]
+}
+
+model Subject {
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  subjectTypes    SubjectType[]
+  teacherSubjects TeacherSubject[]
+}
+
+model SubjectType {
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  subjects        Subject[]
+  teacherSubjects TeacherSubject[]
+}
+
+model Course {
+  id          Int              @id @default(autoincrement())
+  level       String           @unique
+  assignments TeacherSubject[]
+}
+
+model Group {
+  id          Int              @id @default(autoincrement())
+  name        String           @unique
+  assignments TeacherSubject[]
+}
+
+model Space {
+  id               Int                @id @default(autoincrement())
+  name             String             @unique
+  teacherSubjects  TeacherSubject[]
+}
+
+model TeacherSubject {
+  id            Int         @id @default(autoincrement())
+  hours         Float
+  subjectId     Int
+  subjectTypeId Int
+  courseId      Int
+  groupId       Int
+  teacherId     Int
+  spaceId       Int
+  Subject       Subject     @relation(fields: [subjectId], references: [id])
+  SubjectType   SubjectType @relation(fields: [subjectTypeId], references: [id])
+  Course        Course      @relation(fields: [courseId], references: [id])
+  Group         Group       @relation(fields: [groupId], references: [id])
+  Teacher       Teacher     @relation(fields: [teacherId], references: [id])
+  Space         Space       @relation(fields: [spaceId], references: [id]) 
+}
