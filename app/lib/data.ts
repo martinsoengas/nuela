@@ -71,3 +71,25 @@ export async function fetchTeacherSubjects(email: string) {
     throw new Error('Failed to fetch teacher subjects.');
   }
 }
+
+export async function fetchHoursByTeacher(email: string) {
+  noStore();
+
+  try {
+    const totalHours = await prisma.teacherSubject.aggregate({
+      _sum: {
+        hours: true,
+      },
+      where: {
+        Teacher: {
+          email: email,
+        },
+      },
+    });
+
+    return totalHours._sum.hours; // Esto retornará la suma total de horas o null si no hay datos
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch hours by teacher.');
+  }
+}

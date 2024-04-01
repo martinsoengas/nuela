@@ -13,7 +13,7 @@ export default function Profile({
     <div className="flex justify-between items-center">
       <div className="flex gap-3">
         <div
-          className={`${inter.className} flex items-center justify-center w-24 h-24 text-[#5C37EB] rounded-lg text-5xl bg-gradient-to-b from-start-profile-gradient to-end-profile-gradient`}
+          className={`${inter.className} flex items-center justify-center w-24 h-24 text-[#5C37EB] rounded-xl text-5xl bg-gradient-to-b from-start-profile-gradient to-end-profile-gradient`}
         >
           {name
             .split(' ')
