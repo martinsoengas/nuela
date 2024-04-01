@@ -1,6 +1,7 @@
 import Header from './components/home/header';
 import Profile from './components/home/profile';
 import TimeCard from './components/home/time-card';
+import ToggleSwitch from './components/home/toggle-switch';
 
 import {
   fetchTeacherProfile,
@@ -24,6 +25,9 @@ export default async function page() {
         <div className="border-t border-gray-200"></div>
         <Profile {...teacherProfile[0]} />
         <div className="border-t border-gray-200"></div>
+        <div className="m-auto">
+          <ToggleSwitch title1="Semanal" title2="Anual" />
+        </div>
         <div className="flex gap-3 w-full">
           <TimeCard title="Horas totales" time={teacherHours} />
           <TimeCard title="Horas lectivas" time={teacherHours} />
