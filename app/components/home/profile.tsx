@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { inter } from '../../ui/fonts';
 
 export default function Profile({
@@ -26,7 +27,9 @@ export default function Profile({
           <div className="text-[#666666]">{phone}</div>
         </div>
       </div>
-      <div className="text-[#635BFF] text-sm">Editar</div>
+      <Link href="#" className="text-[#635BFF] text-sm">
+        Editar
+      </Link>
     </div>
   );
 }

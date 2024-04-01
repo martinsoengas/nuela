@@ -3,6 +3,9 @@ import Profile from './components/home/profile';
 import TimeCard from './components/home/time-card';
 import ToggleSwitch from './components/home/toggle-switch';
 import Tab from './components/home/tab';
+import Button from './components/home/button';
+import Table from './components/home/table';
+import { PlusIcon } from '@heroicons/react/24/outline';
 
 import {
   fetchTeacherProfile,
@@ -12,6 +15,7 @@ import {
 
 const HARD_CODED_EMAIL = 'profesora123@colegio.com';
 const HARD_CODED_COMP_HOURS = '0';
+const PLUS_ICON = <PlusIcon className="w-4 h-4 text-white" />;
 
 export default async function page() {
   const teacherProfile = await fetchTeacherProfile(HARD_CODED_EMAIL);
@@ -50,6 +54,12 @@ export default async function page() {
           <Tab title="Horas Lectivas" isSelected={true} />
           <Tab title="Horas Complementarias" isSelected={false} />
         </div>
+
+        <div className="flex justify-end">
+          <Button icon={PLUS_ICON} title="Añadir Asignatura" />
+        </div>
+
+        <Table teacherSubjects={teacherSubjects} />
       </div>
     </main>
   );
