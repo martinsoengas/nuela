@@ -81,7 +81,7 @@ export default function SideNav() {
             <div className="w-6 h-6 rounded-full bg-[#F6F6F6] text-center">
               <div>J</div>
             </div>
-            <div className="absolute bottom-0 right-0 rounded-full w-2 h-2 bg-[#7CC731] border-white border-2"></div>
+            <div className="absolute bottom-0 right-0 rounded-full w-2 h-2 bg-[#7CC731] border border-white"></div>
           </div>
         </div>
 
