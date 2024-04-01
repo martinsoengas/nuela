@@ -15,6 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link
+        href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&display=swap"
+        rel="stylesheet"
+      />
       <body className={`${onest.className}`}>
         <div className="sm:flex">
           <div className="hidden md:block">

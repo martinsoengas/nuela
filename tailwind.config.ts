@@ -17,6 +17,9 @@ const config: Config = {
         'start-profile-gradient': '#EAE9FE',
         'end-profile-gradient': '#D6D5FF',
       },
+      fontFamily: {
+        satoshi: ['satoshi', 'sans-serif'],
+      },
     },
   },
   plugins: [],
