@@ -29,7 +29,7 @@ export async function fetchTeacherSubjects(email: string) {
   noStore();
 
   try {
-    const teacherSubjectInfo = await prisma.teacherSubject.findMany({
+    const RAWteacherSubjectInfo = await prisma.teacherSubject.findMany({
       where: {
         Teacher: {
           email: email,
@@ -64,6 +64,15 @@ export async function fetchTeacherSubjects(email: string) {
         },
       },
     });
+
+    const teacherSubjectInfo = RAWteacherSubjectInfo.map((item) => ({
+      subject: item.Subject.name,
+      subjectType: item.SubjectType.name,
+      course: item.Course.level,
+      group: item.Group.name,
+      hours: item.hours,
+      space: item.Space.name,
+    }));
 
     return teacherSubjectInfo;
   } catch (err) {
