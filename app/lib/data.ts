@@ -11,11 +11,6 @@ export async function fetchTeacherProfile(email: string) {
       where: {
         email: email,
       },
-      select: {
-        name: true,
-        email: true,
-        phone: true,
-      },
     });
 
     return teacherInfo;
@@ -96,9 +91,29 @@ export async function fetchHoursByTeacher(email: string) {
       },
     });
 
-    return totalHours._sum.hours; // Esto retornará la suma total de horas o null si no hay datos
+    return totalHours._sum.hours;
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch hours by teacher.');
   }
+}
+
+export async function fetchAllData() {
+  const subjects = await prisma.subject.findMany();
+
+  const subjectTypes = await prisma.subjectType.findMany();
+
+  const courses = await prisma.course.findMany();
+
+  const groups = await prisma.group.findMany();
+
+  const spaces = await prisma.space.findMany();
+
+  return {
+    subjects,
+    subjectTypes,
+    courses,
+    groups,
+    spaces,
+  };
 }

@@ -1,6 +1,6 @@
-import SideNav from './components/dashboard/side-nav';
-import './globals.css';
-import { onest } from './ui/fonts';
+import SideNav from '../components/dashboard/side-nav';
+import '../globals.css';
+import { onest } from '../ui/fonts';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 
 export const metadata = {

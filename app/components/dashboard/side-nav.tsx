@@ -10,10 +10,12 @@ import {
   Cog6ToothIcon,
 } from '@heroicons/react/24/outline';
 
+const ICONS_CLASS = 'h-5 w-5 text-[#121212]';
+
 const navigation = [
   {
     name: 'Inicio',
-    href: '#',
+    href: '/',
     icon: (
       <Image
         width={20}
@@ -27,37 +29,37 @@ const navigation = [
   {
     name: 'Horarios',
     href: '#',
-    icon: <ClockIcon className="h-5 w-5 text-[#121212]" />,
+    icon: <ClockIcon className={ICONS_CLASS} />,
   },
   {
     name: 'Profesores',
     href: '#',
-    icon: <AcademicCapIcon className="h-5 w-5 text-[#121212]" />,
+    icon: <AcademicCapIcon className={ICONS_CLASS} />,
   },
   {
     name: 'Familias',
     href: '#',
-    icon: <UserGroupIcon className="h-5 w-5 text-[#121212]" />,
+    icon: <UserGroupIcon className={ICONS_CLASS} />,
   },
   {
     name: 'Espacios',
     href: '#',
-    icon: <CubeIcon className="h-5 w-5 text-[#121212]" />,
+    icon: <CubeIcon className={ICONS_CLASS} />,
   },
   {
     name: 'Asignaturas',
     href: '#',
-    icon: <BookOpenIcon className="h-5 w-5 text-[#121212]" />,
+    icon: <BookOpenIcon className={ICONS_CLASS} />,
   },
   {
     name: 'Notificaciones',
     href: '#',
-    icon: <BellIcon className="h-5 w-5 text-[#121212]" />,
+    icon: <BellIcon className={ICONS_CLASS} />,
   },
   {
     name: 'Settings',
     href: '#',
-    icon: <Cog6ToothIcon className="h-5 w-5 text-[#121212]" />,
+    icon: <Cog6ToothIcon className={ICONS_CLASS} />,
   },
 ];
 

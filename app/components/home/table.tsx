@@ -16,7 +16,7 @@ type TableProps = {
 export default function Table({ teacherSubjects }: TableProps) {
   return (
     <div className="overflow-x-auto rounded-2xl border shadow-sm">
-      <table className="min-w-full bg-white">
+      <table className="min-w-full bg-white divide-y">
         <thead>
           <tr className="bg-[#FBFBFB] text-[#A5A5A5] text-sm">
             <th className="text-left py-3 px-4 font-normal">Nombre</th>
@@ -28,14 +28,14 @@ export default function Table({ teacherSubjects }: TableProps) {
             <th className="text-left py-3 px-4 font-normal">Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y">
           {teacherSubjects.map((subject, index) => (
-            <tr key={index} className="text-[#5E5E5E] text-sm">
+            <tr key={index} className="text-[#5E5E5E] text-sm ">
               <td className="py-3 px-4">{subject.subject}</td>
               <td className="py-3 px-4">{subject.subjectType}</td>
               <td className="py-3 px-4">{subject.course}</td>
               <td className="py-3 px-4">{subject.group}</td>
-              <td className="py-3 px-4">{subject.hours}</td>
+              <td className="py-3 px-4">{subject.hours} h</td>
               <td className="py-3 px-4">{subject.space}</td>
               <td className="py-3 px-4 text-sm">
                 <Link
