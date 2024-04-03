@@ -11,11 +11,6 @@ export async function fetchTeacherProfile(email: string) {
       where: {
         email: email,
       },
-      select: {
-        name: true,
-        email: true,
-        phone: true,
-      },
     });
 
     return teacherInfo;
@@ -29,7 +24,7 @@ export async function fetchTeacherSubjects(email: string) {
   noStore();
 
   try {
-    const teacherSubjectInfo = await prisma.teacherSubject.findMany({
+    const RAWteacherSubjectInfo = await prisma.teacherSubject.findMany({
       where: {
         Teacher: {
           email: email,
@@ -65,9 +60,60 @@ export async function fetchTeacherSubjects(email: string) {
       },
     });
 
+    const teacherSubjectInfo = RAWteacherSubjectInfo.map((item) => ({
+      subject: item.Subject.name,
+      subjectType: item.SubjectType.name,
+      course: item.Course.level,
+      group: item.Group.name,
+      hours: item.hours,
+      space: item.Space.name,
+    }));
+
     return teacherSubjectInfo;
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch teacher subjects.');
   }
+}
+
+export async function fetchHoursByTeacher(email: string) {
+  noStore();
+
+  try {
+    const totalHours = await prisma.teacherSubject.aggregate({
+      _sum: {
+        hours: true,
+      },
+      where: {
+        Teacher: {
+          email: email,
+        },
+      },
+    });
+
+    return totalHours._sum.hours;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch hours by teacher.');
+  }
+}
+
+export async function fetchAllData() {
+  const subjects = await prisma.subject.findMany();
+
+  const subjectTypes = await prisma.subjectType.findMany();
+
+  const courses = await prisma.course.findMany();
+
+  const groups = await prisma.group.findMany();
+
+  const spaces = await prisma.space.findMany();
+
+  return {
+    subjects,
+    subjectTypes,
+    courses,
+    groups,
+    spaces,
+  };
 }

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { inter } from '../../ui/fonts';
 
 export default function Profile({
@@ -13,7 +14,7 @@ export default function Profile({
     <div className="flex justify-between items-center">
       <div className="flex gap-3">
         <div
-          className={`${inter.className} flex items-center justify-center w-24 h-24 text-[#5C37EB] rounded-lg text-5xl bg-gradient-to-b from-start-profile-gradient to-end-profile-gradient`}
+          className={`${inter.className} flex items-center justify-center w-24 h-24 text-[#5C37EB] rounded-xl text-5xl bg-gradient-to-b from-start-profile-gradient to-end-profile-gradient`}
         >
           {name
             .split(' ')
@@ -26,7 +27,9 @@ export default function Profile({
           <div className="text-[#666666]">{phone}</div>
         </div>
       </div>
-      <div className="text-[#635BFF] text-sm">Editar</div>
+      <Link href="#" className="text-[#635BFF] text-sm">
+        Editar
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import SideNav from './components/dashboard/side-nav';
-import './globals.css';
-import { onest } from './ui/fonts';
+import SideNav from '../components/dashboard/side-nav';
+import '../globals.css';
+import { onest } from '../ui/fonts';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 
 export const metadata = {
@@ -15,6 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${onest.className}`}>
         <div className="sm:flex">
           <div className="hidden md:block">
